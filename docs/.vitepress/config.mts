@@ -22,10 +22,11 @@ export default defineConfig({
       provider: 'local',
     },
     nav: [
-      { text: '博客', link: '/blog/' },
-      { text: '归档', link: '/archives/' },
-      { text: '标签', link: '/tags/' },
-      { text: '关于', link: '/about/' },
+      { text: 'Blog', link: '/blog/' },
+      { text: 'Archives', link: '/archives/' },
+      { text: 'Tags', link: '/tags/' },
+      { text: 'Friends', link: '/friends/' },
+      { text: 'About', link: '/about/' },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Wwweinuo' },
