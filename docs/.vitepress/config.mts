@@ -4,7 +4,7 @@ export default defineConfig({
   title: 'Wwweinuo',
   description: '个人技术博客 - 记录学习与思考',
   lang: 'zh-CN',
-  base: '/',
+  base: '/wwweinuo.github.io/',
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
