@@ -1,35 +1,7 @@
 <script setup lang="ts">
-interface Post {
-  title: string
-  date: string
-  url: string
-  summary: string
-  tags: string[]
-}
+import { data as allPosts } from '../../../blog/posts.data.ts'
 
-const posts: Post[] = [
-  {
-    title: 'Hello World —— 博客开篇',
-    date: '2026-05-22',
-    url: '/blog/2026/hello-world',
-    summary: '这是本博客的第一篇文章，记录了我搭建这个博客的过程和技术选型的思考。',
-    tags: ['VitePress', 'GitHub Pages'],
-  },
-  {
-    title: 'VitePress 主题定制指南',
-    date: '2026-05-20',
-    url: '/blog/2026/vitepress-theme-guide',
-    summary: '深入探讨 VitePress 自定义主题的方法，包括布局扩展、CSS 变量覆盖和组件开发。',
-    tags: ['VitePress', '前端'],
-  },
-  {
-    title: 'Git 工作流最佳实践',
-    date: '2026-05-18',
-    url: '/blog/2026/git-workflow',
-    summary: '分享日常开发中常用的 Git 工作流，包括分支策略、commit 规范和协作技巧。',
-    tags: ['Git', 'DevOps'],
-  },
-]
+const posts = allPosts.slice(0, 5)
 </script>
 
 <template>

@@ -12,7 +12,13 @@ function groupByYear(posts) {
     if (!map[year]) map[year] = []
     map[year].push(post)
   }
-  return Object.entries(map).sort((a, b) => b[0].localeCompare(a[0]))
+  // 年份倒序
+  const sortedEntries = Object.entries(map).sort((a, b) => b[0].localeCompare(a[0]))
+  // 每年内文章按日期倒序
+  for (const [, posts] of sortedEntries) {
+    posts.sort((a, b) => b.date.localeCompare(a.date))
+  }
+  return sortedEntries
 }
 
 const archives = groupByYear(posts)

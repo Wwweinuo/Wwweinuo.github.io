@@ -8,10 +8,14 @@
     "build": "vitepress build docs",
     "preview": "vitepress preview docs"
   },
-  "keywords": ["blog", "vitepress"],
+  "keywords": [
+    "blog",
+    "vitepress"
+  ],
   "author": "Wwweinuo",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^25.9.1",
     "vitepress": "^1.6.4",
     "vue": "^3.5.34"
   }
