@@ -11,7 +11,7 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#3451b2' }],
+    ['meta', { name: 'theme-color', content: '#059669' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
   ],
@@ -31,7 +31,6 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/Wwweinuo' },
     ],
     footer: {
-      message: '基于 VitePress 构建',
       copyright: `© ${new Date().getFullYear()} Wwweinuo`,
     },
     docFooter: {
