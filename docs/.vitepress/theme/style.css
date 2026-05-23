@@ -114,6 +114,28 @@
   transform: translateY(-1px);
 }
 
+/* Signature / Motto */
+.signature {
+  margin-bottom: 32px;
+}
+
+.signature-quote {
+  font-size: 15px;
+  color: var(--vp-c-text-2);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.signature-mark {
+  color: var(--vp-c-brand-1);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.signature-text {
+  margin: 0 4px;
+}
+
 /* Post list */
 .post-list {
   max-width: 720px;

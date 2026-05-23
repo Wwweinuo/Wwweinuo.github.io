@@ -21,17 +21,21 @@ export default createContentLoader('blog/**/*.md', {
     return raw
       .filter((page) => page.url !== '/blog/')
       .map((page) => {
-        let mtime = String(page.frontmatter.date || '')
+        let dateStr = ''
         try {
           const filePath = resolve(docsDir, `.${page.url}.md`)
-          mtime = statSync(filePath).mtime.toISOString().slice(0, 10)
+          dateStr = statSync(filePath).mtime.toISOString().slice(0, 10)
         } catch {
-          // 读取文件时间失败则回退到 frontmatter date
+          // ignore
         }
+        const rawDate = page.frontmatter.date
+        const publishDate = rawDate instanceof Date
+          ? rawDate.toISOString().slice(0, 10)
+          : String(rawDate || dateStr)
         return {
           title: page.frontmatter.title || '',
           url: page.url,
-          date: mtime,
+          date: publishDate,
           summary: page.frontmatter.summary || '',
           tags: page.frontmatter.tags || [],
         }

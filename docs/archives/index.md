@@ -1,5 +1,5 @@
 ---
-title: 归档
+title: Archives
 ---
 
 <script setup>
@@ -25,7 +25,7 @@ const archives = groupByYear(posts)
 </script>
 
 <div class="archives-page">
-  <h1>归档</h1>
+  <h1>Archives</h1>
   <template v-for="[year, posts] in archives" :key="year">
     <h2 class="archive-year">{{ year }}</h2>
     <div v-for="post in posts" :key="post.url" class="archive-item">

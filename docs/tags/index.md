@@ -1,5 +1,5 @@
 ---
-title: 标签
+title: Tags
 ---
 
 <script setup>
@@ -23,7 +23,7 @@ const activeTag = typeof window !== 'undefined' ? decodeURIComponent(window.loca
 </script>
 
 <div class="blog-page">
-  <h1>标签</h1>
+  <h1>Tags</h1>
   <div class="tag-cloud">
     <a
       v-for="[tag, data] in tags"

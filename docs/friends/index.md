@@ -1,5 +1,5 @@
 ---
-title: 朋友
+title: Friends
 description: 友情链接
 ---
 
@@ -33,7 +33,7 @@ const friends = [
 </script>
 
 <div class="friends-page">
-  <h1>朋友</h1>
+  <h1>Friends</h1>
   <p class="friends-intro">欢迎互加友链，<a href="https://github.com/Wwweinuo/Wwweinuo.github.io/issues">点击这里</a> 留言交换。</p>
   <div class="friends-grid">
     <component

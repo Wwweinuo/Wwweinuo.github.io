@@ -1,5 +1,5 @@
 ---
-title: 博客
+title: Blog
 description: 所有文章列表
 ---
 
@@ -8,7 +8,7 @@ import { data as posts } from './posts.data.ts'
 </script>
 
 <div class="blog-page">
-  <h1>博客</h1>
+  <h1>Blog</h1>
   <div class="post-list" style="padding: 0;">
     <div v-for="post in posts" :key="post.url" class="post-item">
       <div class="post-date">{{ post.date }}</div>
