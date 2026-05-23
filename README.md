@@ -61,4 +61,4 @@ summary: 文章摘要，用于列表页展示
 
 ## License
 
-[ISC](LICENSE)
+[MIT](LICENSE)
