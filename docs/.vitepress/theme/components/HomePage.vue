@@ -13,7 +13,6 @@ const quotes = [
   '先让它跑起来，再让它跑得快。',
   '你不需要很厉害才能开始，但你需要开始才能很厉害。',
   '编程不是打字，是思考。',
-  '在自己的节奏里，慢慢成为更好的人。',
 ]
 
 const quote = ref(quotes[Math.floor(Math.random() * quotes.length)])
