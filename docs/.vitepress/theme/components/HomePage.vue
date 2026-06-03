@@ -40,10 +40,17 @@ const quote = ref(quotes[Math.floor(Math.random() * quotes.length)])
     </div>
   </div>
 
+  <div class="home-pv-section">
+    <PageViews type="full" />
+  </div>
+
   <div class="post-list">
     <h2 class="section-title">最新文章</h2>
     <div v-for="post in posts" :key="post.url" class="post-item">
-      <div class="post-date">{{ post.date }}</div>
+      <div class="post-date">
+        <span>{{ post.date }}</span>
+        <span class="post-meta-pv">📖 <PagePvCount :path="post.url" /></span>
+      </div>
       <div class="post-title">
         <a :href="post.url">{{ post.title }}</a>
       </div>

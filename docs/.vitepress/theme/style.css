@@ -161,9 +161,21 @@
 }
 
 .post-item .post-date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 13px;
   color: var(--vp-c-text-2);
   margin-bottom: 6px;
+}
+
+.post-meta-pv {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
 }
 
 .post-item .post-title {
@@ -387,6 +399,24 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Page Views */
+.vp-doc + .pv-counter {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 0 32px;
+}
+
+.vp-doc + .pv-page-only {
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 32px;
+}
+
+/* Home page site-wide PV */
+.home-pv-section {
+  text-align: center;
+  padding: 16px 24px 48px;
 }
 
 /* Responsive */

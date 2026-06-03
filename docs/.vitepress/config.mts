@@ -14,6 +14,7 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#059669' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['script', { async: '', src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }],
   ],
 
   themeConfig: {
