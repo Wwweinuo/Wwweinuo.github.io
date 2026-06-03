@@ -161,21 +161,9 @@
 }
 
 .post-item .post-date {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-size: 13px;
   color: var(--vp-c-text-2);
   margin-bottom: 6px;
-}
-
-.post-meta-pv {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  white-space: nowrap;
 }
 
 .post-item .post-title {

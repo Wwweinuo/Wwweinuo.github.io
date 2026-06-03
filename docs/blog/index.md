@@ -11,10 +11,7 @@ import { data as posts } from './posts.data.ts'
   <h1>Blog</h1>
   <div class="post-list" style="padding: 0;">
     <div v-for="post in posts" :key="post.url" class="post-item">
-      <div class="post-date">
-        <span>{{ post.date }}</span>
-        <span class="post-meta-pv">📖 <PagePvCount :path="post.url" /></span>
-      </div>
+      <div class="post-date">{{ post.date }}</div>
       <div class="post-title">
         <a :href="post.url">{{ post.title }}</a>
       </div>

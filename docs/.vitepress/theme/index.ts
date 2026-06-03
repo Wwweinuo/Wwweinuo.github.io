@@ -3,7 +3,6 @@ import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 import HomePage from './components/HomePage.vue'
 import PageViews from './components/PageViews.vue'
-import PagePvCount from './components/PagePvCount.vue'
 import './style.css'
 
 export default {
@@ -16,6 +15,5 @@ export default {
   enhanceApp({ app }) {
     app.component('HomePage', HomePage)
     app.component('PageViews', PageViews)
-    app.component('PagePvCount', PagePvCount)
   },
 } satisfies Theme
