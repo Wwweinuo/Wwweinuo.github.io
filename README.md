@@ -1,5 +1,9 @@
 # Wwweinuo's Blog
 
+![GitHub Repo stars](https://img.shields.io/github/stars/Wwweinuo/Wwweinuo.github.io?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/Wwweinuo/Wwweinuo.github.io)
+![License](https://img.shields.io/github/license/Wwweinuo/Wwweinuo.github.io)
+
 基于 [VitePress](https://vitepress.dev) 构建的个人技术博客，部署在 GitHub Pages。
 
 ## 技术栈
@@ -58,6 +62,10 @@ summary: 文章摘要，用于列表页展示
 ## 部署
 
 推送到 `master` 分支后，GitHub Actions 自动构建并部署到 GitHub Pages。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Wwweinuo/Wwweinuo.github.io&type=Date)](https://star-history.com/#Wwweinuo/Wwweinuo.github.io&Date)
 
 ## License
 
