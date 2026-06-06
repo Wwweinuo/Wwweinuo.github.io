@@ -389,24 +389,6 @@
   text-overflow: ellipsis;
 }
 
-/* Page Views */
-.vp-doc + .pv-counter {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 16px 0 32px;
-}
-
-.vp-doc + .pv-page-only {
-  border-top: 1px solid var(--vp-c-divider);
-  margin-top: 32px;
-}
-
-/* Home page site-wide PV */
-.home-pv-section {
-  text-align: center;
-  padding: 16px 24px 48px;
-}
-
 /* Responsive */
 @media (max-width: 640px) {
   .vp-home-hero h1 {
