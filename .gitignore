@@ -30,6 +30,20 @@ vite.config.ts.timestamp-*
 
 # claude
 .claude/
+.agents/
+
+# skills lock
+skills-lock.json
 
 # vscode
 .vscode/
+
+# HyperFrames
+.hyperframes/
+covers/
+output.mp4
+index.html
+
+
+项目介绍视频稿.md
+

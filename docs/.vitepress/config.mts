@@ -40,7 +40,7 @@ export default defineConfig({
     },
     outline: {
       label: '目录',
-      level: [2, 3],
+      level: [1, 4],
     },
     lastUpdated: {
       text: '最后更新于',
