@@ -17,11 +17,7 @@ head:
 >
 > **阅读建议**：第 1-2 章适合入门了解；第 3-5 章是核心编写指南；第 6-8 章适合进阶提升；第 9-10 章可作为部署前的参考检查。
 
----
-
 [[TOC]]
-
----
 
 ## 1. 什么是 Skill
 
@@ -42,8 +38,6 @@ Skill 是 Claude Code 的一种扩展机制——本质上是一个包含 `SKILL
 1. **全局 Skill**：放在 `~/.claude/skills/`，所有项目可见
 2. **项目 Skill**：放在 `项目根目录/.claude/skills/`，仅当前项目可见
 3. **插件 Skill**：通过 Plugin 系统分发，命名空间为 `/plugin-name:skill-name`
-
----
 
 ## 2. Skill 架构与文件结构
 
@@ -79,8 +73,6 @@ skill-name/
 | 3. references/ | 按需加载的深度内容 | 无硬性限制 |
 
 **核心原则**：如果跳过 references 会导致 Claude 输出错误的内容，说明这部分应该放进 SKILL.md。
-
----
 
 ## 3. Frontmatter 完全指南
 
@@ -178,7 +170,6 @@ effort: high      # 让 Claude 投入更多思考
 effort: medium    # 默认级别
 ```
 
----
 
 ## 4. Description 编写艺术
 
@@ -272,7 +263,6 @@ description: >-
 
 结论：description 重要但不可完全依赖。对于关键 Skill，考虑配合 hooks 使用或直接手动调用。
 
----
 
 ## 5. Body 指令编写最佳实践
 
@@ -393,8 +383,6 @@ def process(data):
 
 `${CLAUDE_SKILL_DIR}` 会在运行时自动替换为 Skill 目录的实际路径。
 
----
-
 ## 6. 内容架构与渐进式披露
 
 ### 6.1 三层披露模型
@@ -437,8 +425,6 @@ def process(data):
 | 无顺序规则 | 项目符号 | - 使用 2 空格缩进 |
 | 复杂逻辑 | 流程图 + 文字描述 | if X then Y else Z |
 
----
-
 ## 7. 激活机制与可靠性
 
 ### 7.1 激活流程
@@ -474,8 +460,6 @@ def process(data):
 | "审查这个 PR" | Skill（手动调用） |
 | "永远不要提交 .env 文件" | PreToolUse Hook |
 
----
-
 ## 8. Anthropic 官方实践经验
 
 根据 Anthropic 团队成员 Thariq Shihipar 的分享，以下是他们内部使用 Skill 的实践总结。
@@ -505,8 +489,6 @@ Anthropic 内部将 Skill 分为以下 9 类：
 5. **日志让 Skill 拥有记忆**——通过读写日志文件，Skill 可以跨会话记住状态
 6. **脚本优先于指令**——能写成脚本的逻辑就不要写成自然语言指令
 7. **为模型写描述，不是给人看**——description 的目标读者是模型的语义匹配系统
-
----
 
 ## 9. 常见错误与陷阱
 
@@ -545,8 +527,6 @@ Anthropic 内部将 Skill 分为以下 9 类：
 | 从不更新 | 随 SDK 升级失效 | 定期审查和更新 |
 | 没有测试 | 生产环境意外行为 | 写 2-3 个测试场景 |
 
----
-
 ## 10. 部署前检查清单
 
 ```markdown
@@ -576,8 +556,6 @@ Anthropic 内部将 Skill 分为以下 9 类：
   □ references 路径引用正确
   □ 工具权限足够完成任务
 ```
-
----
 
 ## 11. 进阶技巧
 
@@ -648,8 +626,6 @@ license: MIT
 
 每次文件写入或编辑后，自动触发 `code-formatter` Skill。
 
----
-
 ## 12. 总结
 
 ### 核心原则
@@ -666,8 +642,6 @@ license: MIT
 
 > **写 Skill 不是写文档——是在教另一个工程师做你的工作，只是这个工程师恰好是 AI。**
 
----
-
 ## 参考资源
 
 - [Anthropic Skills 官方仓库](https://github.com/anthropics/skills)
@@ -676,7 +650,5 @@ license: MIT
 - [Claude Code Skills MD — Ultimate Guide (skywork.ai)](https://skywork.ai/blog/claude-code-skills-md-ultimate-guide/)
 - [How to Build Your Own Claude Code Skill (freeCodeCamp)](https://www.freecodecamp.org/news/how-to-build-your-own-claude-code-skill/)
 - [Claude Code Skills vs MCP vs Plugins (morphllm.com)](https://www.morphllm.com/claude-code-skills-mcp-plugins)
-
----
 
 *本文整理自 Claude Code Skill 编写指南，最后更新于 2026 年 6 月 16 日。*
