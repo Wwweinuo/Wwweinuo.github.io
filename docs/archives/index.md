@@ -27,12 +27,17 @@ const archives = groupByYear(posts)
 <div class="archives-page">
   <h1>Archives</h1>
   <template v-for="[year, posts] in archives" :key="year">
-    <h2 class="archive-year">{{ year }}</h2>
-    <div v-for="post in posts" :key="post.url" class="archive-item">
-      <span class="archive-date">{{ post.date }}</span>
-      <span class="archive-title">
-        <a :href="post.url">{{ post.title }}</a>
-      </span>
+    <h2 class="archive-year">{{ year }} <span class="archive-count">{{ posts.length }}</span></h2>
+    <div class="archive-posts">
+      <a
+        v-for="post in posts"
+        :key="post.url"
+        :href="post.url"
+        class="archive-post"
+      >
+        <span class="archive-post-date">{{ post.date }}</span>
+        <span class="archive-post-title">{{ post.title }}</span>
+      </a>
     </div>
   </template>
 </div>

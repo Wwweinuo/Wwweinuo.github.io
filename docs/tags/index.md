@@ -33,17 +33,18 @@ const activeTag = typeof window !== 'undefined' ? decodeURIComponent(window.loca
     >{{ tag }} ({{ data.count }})</a>
   </div>
 
-  <div v-for="[tag, data] in tags" :key="tag">
-    <h2 :id="tag" style="margin-top: 32px; font-size: 20px; font-weight: 600;">
-      {{ tag }}
-    </h2>
-    <div class="post-list" style="padding: 0;">
-      <div v-for="post in data.posts" :key="post.url" class="post-item">
-        <div class="post-date">{{ post.date }}</div>
-        <div class="post-title">
-          <a :href="post.url">{{ post.title }}</a>
-        </div>
-      </div>
+  <div v-for="[tag, data] in tags" :key="tag" class="tag-section">
+    <h2 :id="tag" class="tag-heading">{{ tag }} <span class="tag-count">{{ data.count }}</span></h2>
+    <div class="tag-posts">
+      <a
+        v-for="post in data.posts"
+        :key="post.url"
+        :href="post.url"
+        class="tag-post"
+      >
+        <span class="tag-post-date">{{ post.date }}</span>
+        <span class="tag-post-title">{{ post.title }}</span>
+      </a>
     </div>
   </div>
 </div>

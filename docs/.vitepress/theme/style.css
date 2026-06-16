@@ -246,6 +246,71 @@
   color: #fff;
 }
 
+/* Tag sections — each tag's article list */
+.tag-section {
+  margin: 32px 0;
+}
+
+.tag-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--vp-c-brand-1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 1px 10px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.tag-posts {
+  display: flex;
+  flex-direction: column;
+}
+
+a.tag-post {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+a.tag-post:hover {
+  background: var(--vp-c-brand-soft);
+  text-decoration: none;
+}
+
+.tag-post-date {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  min-width: 85px;
+}
+
+.tag-post-title {
+  font-size: 15px;
+  color: var(--vp-c-text-1);
+  transition: color 0.15s ease;
+}
+
+.tag-post:hover .tag-post-title {
+  color: var(--vp-c-brand-1);
+}
+
 /* Archives */
 .archives-page {
   max-width: 780px;
@@ -260,17 +325,63 @@
 }
 
 .archive-year {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
   margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--vp-c-brand-1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.archive-item {
+.archive-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 1px 10px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.archive-posts {
+  display: flex;
+  flex-direction: column;
+}
+
+a.archive-post {
   display: flex;
   align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--vp-c-divider);
+  gap: 20px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+a.archive-post:hover {
+  background: var(--vp-c-brand-soft);
+  text-decoration: none;
+}
+
+.archive-post-date {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  min-width: 85px;
+}
+
+.archive-post-title {
+  font-size: 15px;
+  color: var(--vp-c-text-1);
+  transition: color 0.15s ease;
+}
+
+.archive-post:hover .archive-post-title {
+  color: var(--vp-c-brand-1);
 }
 
 .archive-item .archive-date {
