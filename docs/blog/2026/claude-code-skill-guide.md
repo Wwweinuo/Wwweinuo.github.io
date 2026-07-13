@@ -650,5 +650,3 @@ license: MIT
 - [Claude Code Skills MD — Ultimate Guide (skywork.ai)](https://skywork.ai/blog/claude-code-skills-md-ultimate-guide/)
 - [How to Build Your Own Claude Code Skill (freeCodeCamp)](https://www.freecodecamp.org/news/how-to-build-your-own-claude-code-skill/)
 - [Claude Code Skills vs MCP vs Plugins (morphllm.com)](https://www.morphllm.com/claude-code-skills-mcp-plugins)
-
-*本文整理自 Claude Code Skill 编写指南，最后更新于 2026 年 6 月 16 日。*
