@@ -48,3 +48,9 @@ index.html
 项目介绍视频稿.md
 /介绍相关文件
 
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
