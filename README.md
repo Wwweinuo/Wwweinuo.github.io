@@ -59,6 +59,20 @@ summary: 文章摘要，用于列表页展示
 ---
 ```
 
+### Mermaid 图表
+
+文章中使用 `mermaid` 围栏代码块即可生成图表：
+
+````markdown
+```mermaid
+flowchart LR
+  A[编写 Markdown] --> B[VitePress 构建]
+  B --> C[Mermaid 图表]
+```
+````
+
+支持流程图、时序图、类图、状态图、ER 图等 Mermaid 图表类型，并会自动适配站点的深浅色模式。图表工具栏支持放大、缩小和重置；放大后可用鼠标或触控拖拽浏览，也可按住 `Ctrl`/`Command` 配合滚轮缩放。
+
 ## 部署
 
 推送到 `master` 分支后，GitHub Actions 自动构建并部署到 GitHub Pages。

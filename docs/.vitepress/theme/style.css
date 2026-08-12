@@ -408,6 +408,121 @@ a.archive-post:hover {
   padding: 32px 24px;
 }
 
+/* Mermaid diagrams */
+.vp-doc .mermaid-diagram {
+  position: relative;
+  margin: 24px 0;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top right, var(--vp-c-brand-soft), transparent 38%),
+    var(--vp-c-bg-soft);
+}
+
+.vp-doc .mermaid-viewport {
+  padding: 24px;
+  overflow: auto;
+  cursor: grab;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--vp-c-brand-2) transparent;
+  scrollbar-width: thin;
+}
+
+.vp-doc .mermaid-diagram:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 3px;
+}
+
+.vp-doc .mermaid-diagram.is-zoomed {
+  touch-action: none;
+}
+
+.vp-doc .mermaid-diagram.is-zoomed .mermaid-viewport {
+  max-height: min(70vh, 720px);
+}
+
+.vp-doc .mermaid-diagram.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.vp-doc .mermaid-diagram svg {
+  display: block;
+  width: auto;
+  min-width: min(100%, 360px);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.vp-doc .mermaid-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 5;
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 4px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 75%, var(--vp-c-brand-1));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent);
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.12);
+  backdrop-filter: blur(12px);
+  cursor: default;
+}
+
+.vp-doc .mermaid-control {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--vp-c-text-1);
+  font: 600 18px/1 var(--vp-font-family-mono);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.vp-doc .mermaid-control:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.vp-doc .mermaid-control:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+}
+
+.vp-doc .mermaid-zoom-label {
+  min-width: 48px;
+  align-self: center;
+  color: var(--vp-c-text-2);
+  font: 600 11px/1 var(--vp-font-family-mono);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.vp-doc .mermaid-diagram .node rect,
+.vp-doc .mermaid-diagram .node circle,
+.vp-doc .mermaid-diagram .node ellipse,
+.vp-doc .mermaid-diagram .node polygon,
+.vp-doc .mermaid-diagram .node path {
+  transition: filter 0.2s ease;
+}
+
+.vp-doc .mermaid-diagram .node:hover rect,
+.vp-doc .mermaid-diagram .node:hover circle,
+.vp-doc .mermaid-diagram .node:hover ellipse,
+.vp-doc .mermaid-diagram .node:hover polygon,
+.vp-doc .mermaid-diagram .node:hover path {
+  filter: drop-shadow(0 3px 5px var(--vp-c-brand-soft));
+}
+
 /* Friends page */
 .friends-page {
   max-width: 780px;
@@ -521,5 +636,14 @@ a.archive-post:hover {
 
   .friends-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vp-doc .mermaid-diagram {
+    margin: 20px -8px;
+    border-radius: 8px;
+  }
+
+  .vp-doc .mermaid-viewport {
+    padding: 16px 12px;
   }
 }
