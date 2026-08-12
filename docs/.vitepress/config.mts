@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'Wwweinuo',
   description: '个人技术博客 - 记录学习与思考',
   lang: 'zh-CN',
@@ -8,6 +9,25 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
+
+  mermaid: {
+    theme: 'base',
+    securityLevel: 'strict',
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    themeVariables: {
+      primaryColor: '#ecfdf5',
+      primaryTextColor: '#2c3e50',
+      primaryBorderColor: '#059669',
+      lineColor: '#10b981',
+      secondaryColor: '#f6f6f7',
+      tertiaryColor: '#ffffff',
+      noteBkgColor: '#fffbeb',
+      noteBorderColor: '#f59e0b',
+    },
+  },
+  mermaidPlugin: {
+    class: 'mermaid-diagram',
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -52,4 +72,4 @@ export default defineConfig({
       linkText: '返回首页',
     },
   },
-})
+}))

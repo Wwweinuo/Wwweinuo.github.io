@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import HomePage from './components/HomePage.vue'
 import BackToTop from './components/BackToTop.vue'
 import Tabs from './components/Tabs.vue'
+import { installMermaidInteractions } from './mermaid-interactions'
 import './style.css'
 
 export default {
@@ -11,6 +12,7 @@ export default {
   enhanceApp({ app }) {
     app.component('HomePage', HomePage)
     app.component('Tabs', Tabs)
+    installMermaidInteractions()
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
