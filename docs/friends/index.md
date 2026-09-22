@@ -29,6 +29,12 @@ const friends = [
     desc: '世界倒数第一欧巴（收血仆）',
     url: '',
   },
+  {
+    name: 'i3bel',
+    avatar: 'https://github.com/user-attachments/assets/5a6d7745-2fc5-4e84-8bdc-7d112f776dbe',
+    desc: '所谓的幸福，就是和重要的人在一起。',
+    url: 'https://i3bel.github.io/',
+  },
 ]
 </script>
 
