@@ -38,7 +38,7 @@
   </style>
 </head>
 <body>
-  <main id="screen" aria-label="粉白同心圆向外流动，中央白色爱心轻轻起伏的全屏动画">
+  <main id="screen" aria-label="粉白同心圆向外流动，中央白色爱心轻轻起伏；点击屏幕会产生波纹并短暂加快背景波动">
     <canvas id="rings" aria-hidden="true"></canvas>
     <svg class="heart" viewBox="0 0 200 190" aria-hidden="true">
       <path class="heart-shadow" transform="translate(0 12)" d="M100 167 C77 153 23 119 15 78 C7 41 31 18 61 20 C79 21 92 31 100 43 C108 31 121 21 139 20 C169 18 193 41 185 78 C177 119 123 153 100 167 Z"/>
@@ -51,7 +51,8 @@
       const canvas = document.getElementById('rings');
       const context = canvas.getContext('2d');
       const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
-      let width = 0, height = 0, start = performance.now(), elapsed = 0;
+      let width = 0, height = 0, distance = 0, speedBoost = 0, lastFrame = performance.now();
+      const ripples = [];
 
       function resize() {
         const bounds = canvas.getBoundingClientRect();
@@ -61,13 +62,13 @@
         canvas.width = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
-        draw(elapsed);
+        draw(distance);
       }
 
-      function draw(elapsed) {
+      function draw(distance, now = performance.now()) {
         const spacing = Math.max(36, Math.min(52, width * 0.11));
         const ratio = Math.max(1.04, Math.min(1.32, height / width * 0.56));
-        const phase = motionPreference.matches ? 0 : (elapsed * 0.004) % spacing;
+        const phase = motionPreference.matches ? 0 : distance % spacing;
         const limit = Math.hypot(width / 2, height / (2 * ratio)) + spacing * 2;
 
         context.fillStyle = '#e32abc';
@@ -79,12 +80,37 @@
           context.ellipse(width / 2, height / 2, radius, radius * ratio, 0, 0, Math.PI * 2);
           context.stroke();
         }
+
+        for (const ripple of ripples) {
+          for (const delay of [0, 160]) {
+            const progress = (now - ripple.start - delay) / 1200;
+            if (progress < 0 || progress >= 1) continue;
+            const radius = 10 + Math.min(width, height) * 0.52 * (1 - (1 - progress) ** 2);
+            const opacity = (1 - progress) ** 2;
+            context.beginPath();
+            context.arc(ripple.x, ripple.y, radius, 0, Math.PI * 2);
+            context.globalAlpha = opacity * 0.65;
+            context.strokeStyle = '#870a82';
+            context.lineWidth = 11;
+            context.stroke();
+            context.globalAlpha = opacity * 0.95;
+            context.strokeStyle = '#fff';
+            context.lineWidth = 5;
+            context.stroke();
+          }
+        }
+        context.globalAlpha = 1;
+        while (ripples.length && now - ripples[0].start > 1360) ripples.shift();
       }
 
       function frame(now) {
+        const elapsedTime = Math.max(0, now - lastFrame);
+        const delta = Math.min(elapsedTime, 50);
+        lastFrame = now;
         if (!motionPreference.matches) {
-          elapsed = now - start;
-          draw(elapsed);
+          speedBoost *= Math.exp(-elapsedTime / 1800);
+          distance += delta * (0.004 + speedBoost);
+          draw(distance, now);
         }
         requestAnimationFrame(frame);
       }
@@ -98,8 +124,18 @@
       }
       enterFullscreen();
       screen.addEventListener('click', enterFullscreen, { once: true });
+      screen.addEventListener('click', (event) => {
+        if (motionPreference.matches) return;
+        const bounds = canvas.getBoundingClientRect();
+        speedBoost = Math.min(speedBoost + 0.016, 0.04);
+        ripples.push({
+          x: event.clientX - bounds.left,
+          y: event.clientY - bounds.top,
+          start: performance.now(),
+        });
+      });
       document.addEventListener('fullscreenchange', resize);
-      motionPreference.addEventListener?.('change', () => draw(elapsed));
+      motionPreference.addEventListener?.('change', () => draw(distance));
       window.addEventListener('resize', resize);
       resize();
       requestAnimationFrame(frame);
