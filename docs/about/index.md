@@ -61,6 +61,6 @@ const tabs = ref([
         <path d="M100 167 C77 153 23 119 15 78 C7 41 31 18 61 20 C79 21 92 31 100 43 C108 31 121 21 139 20 C169 18 193 41 185 78 C177 119 123 153 100 167 Z" />
       </svg>
     </span>
-    <span class="hypno-entry-label">进入心动波纹</span>
+    <span class="hypno-entry-label">点击我</span>
   </a>
 </div>
