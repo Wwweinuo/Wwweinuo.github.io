@@ -408,6 +408,71 @@ a.archive-post:hover {
   padding: 32px 24px;
 }
 
+.hypno-entry-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.vp-doc a.hypno-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+  padding: 8px 24px 8px 8px;
+  border: 2px solid #900b89;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e32abc, #bd18a8);
+  box-shadow: 0 8px 22px rgba(176, 18, 154, 0.28);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  animation: hypno-entry-breathe 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.vp-doc a.hypno-entry:hover {
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(176, 18, 154, 0.38);
+}
+
+.vp-doc a.hypno-entry:focus-visible {
+  outline: 3px solid #900b89;
+  outline-offset: 5px;
+}
+
+.hypno-entry-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #fff 0 5px, #e32abc 6px 11px);
+}
+
+.hypno-entry-icon svg {
+  display: block;
+  width: 35px;
+  height: 35px;
+  fill: #fff;
+  stroke: #900b89;
+  stroke-width: 12px;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 0 #b51a9d);
+}
+
+@keyframes hypno-entry-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.055); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc a.hypno-entry { animation: none; }
+}
+
 /* Mermaid diagrams */
 .vp-doc .mermaid-diagram {
   position: relative;

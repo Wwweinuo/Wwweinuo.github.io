@@ -53,3 +53,14 @@ const tabs = ref([
 </script>
 
 <Tabs :tabs="tabs" />
+
+<div class="hypno-entry-wrap">
+  <a class="hypno-entry" href="/hypno/" target="_self" aria-label="打开心动波纹全屏界面">
+    <span class="hypno-entry-icon" aria-hidden="true">
+      <svg viewBox="0 0 200 190" focusable="false">
+        <path d="M100 167 C77 153 23 119 15 78 C7 41 31 18 61 20 C79 21 92 31 100 43 C108 31 121 21 139 20 C169 18 193 41 185 78 C177 119 123 153 100 167 Z" />
+      </svg>
+    </span>
+    <span class="hypno-entry-label">进入心动波纹</span>
+  </a>
+</div>

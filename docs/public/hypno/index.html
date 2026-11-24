@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#e32abc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>心动波纹</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body { background: #e32abc; font-family: system-ui, sans-serif; }
+    main { position: relative; width: 100%; height: 100vh; height: 100dvh; overflow: hidden; }
+    canvas { display: block; width: 100%; height: 100%; }
+
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(150px, 48vw, 205px);
+      height: auto;
+      overflow: visible;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 8px 1px rgba(104, 0, 107, .26));
+      animation: pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .heart-shadow { fill: #ba169e; stroke: #870a82; stroke-width: 7; }
+    .heart-face { fill: #fff; stroke: #920b8f; stroke-width: 8; stroke-linejoin: round; }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.045); }
+    }
+    @media (prefers-reduced-motion: reduce) { .heart { animation: none; } }
+  </style>
+</head>
+<body>
+  <main id="screen" aria-label="粉白同心圆向外流动，中央白色爱心轻轻起伏的全屏动画">
+    <canvas id="rings" aria-hidden="true"></canvas>
+    <svg class="heart" viewBox="0 0 200 190" aria-hidden="true">
+      <path class="heart-shadow" transform="translate(0 12)" d="M100 167 C77 153 23 119 15 78 C7 41 31 18 61 20 C79 21 92 31 100 43 C108 31 121 21 139 20 C169 18 193 41 185 78 C177 119 123 153 100 167 Z"/>
+      <path class="heart-face" d="M100 167 C77 153 23 119 15 78 C7 41 31 18 61 20 C79 21 92 31 100 43 C108 31 121 21 139 20 C169 18 193 41 185 78 C177 119 123 153 100 167 Z"/>
+    </svg>
+  </main>
+  <script>
+    (() => {
+      const screen = document.getElementById('screen');
+      const canvas = document.getElementById('rings');
+      const context = canvas.getContext('2d');
+      const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+      let width = 0, height = 0, start = performance.now(), elapsed = 0;
+
+      function resize() {
+        const bounds = canvas.getBoundingClientRect();
+        const dpr = Math.min(devicePixelRatio || 1, 2);
+        width = bounds.width;
+        height = bounds.height;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw(elapsed);
+      }
+
+      function draw(elapsed) {
+        const spacing = Math.max(36, Math.min(52, width * 0.11));
+        const ratio = Math.max(1.04, Math.min(1.32, height / width * 0.56));
+        const phase = motionPreference.matches ? 0 : (elapsed * 0.004) % spacing;
+        const limit = Math.hypot(width / 2, height / (2 * ratio)) + spacing * 2;
+
+        context.fillStyle = '#e32abc';
+        context.fillRect(0, 0, width, height);
+        context.strokeStyle = '#fff';
+        context.lineWidth = spacing * 0.46;
+        for (let radius = 12 + phase; radius < limit; radius += spacing) {
+          context.beginPath();
+          context.ellipse(width / 2, height / 2, radius, radius * ratio, 0, 0, Math.PI * 2);
+          context.stroke();
+        }
+      }
+
+      function frame(now) {
+        if (!motionPreference.matches) {
+          elapsed = now - start;
+          draw(elapsed);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      async function enterFullscreen() {
+        if (!document.documentElement.requestFullscreen || document.fullscreenElement) return;
+        try {
+          await document.documentElement.requestFullscreen();
+          resize();
+        } catch (error) { /* 普通浏览器要求用户先触摸页面。 */ }
+      }
+      enterFullscreen();
+      screen.addEventListener('click', enterFullscreen, { once: true });
+      document.addEventListener('fullscreenchange', resize);
+      motionPreference.addEventListener?.('change', () => draw(elapsed));
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
